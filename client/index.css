@@ -1,0 +1,31 @@
+.chart {
+  width: 600px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+nav {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 80px;
+  padding: 10px;
+}
+
+img {
+  margin-bottom: 10px;
+}
+
+form {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+input {
+  margin-right: 10px;
+}
