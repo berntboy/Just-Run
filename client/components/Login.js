@@ -54,6 +54,7 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
             sx={{ marginTop: 1, marginBottom: 1, display: "block" }}
             label="Password"
+            type="password"
             variant="outlined"
             color="primary"
             error={passwordError}

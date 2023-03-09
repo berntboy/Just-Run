@@ -8,16 +8,20 @@ import { Box } from "@mui/material";
 export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [imageUrlError, setImageUrlError] = useState("");
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [lastNameError, setLastNameError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setUsernameError(false);
     setPasswordError(false);
-    setImageUrlError(false);
+    setFirstNameError(false);
+    setLastNameError(false);
 
     if (username === "") {
       setUsernameError(true);
@@ -25,11 +29,14 @@ export default function Signup() {
     if (password === "") {
       setPasswordError(true);
     }
-    if (imageUrl === "") {
-      setImageUrlError(true);
+    if (firstName === "") {
+      setFirstNameError(true);
+    }
+    if (lastName === "") {
+      setLastNameError(true);
     }
 
-    if (username && password) {
+    if (username && password && firstName && lastName) {
       console.log(username, password);
     }
   };
@@ -47,6 +54,22 @@ export default function Signup() {
           className="content"
         >
           <TextField
+            onChange={(e) => setFirstName(e.target.value)}
+            sx={{ marginTop: 1, marginBottom: 1, display: "block" }}
+            label="First Name"
+            variant="outlined"
+            color="primary"
+            error={firstNameError}
+          />
+          <TextField
+            onChange={(e) => setLastName(e.target.value)}
+            sx={{ marginTop: 1, marginBottom: 1, display: "block" }}
+            label="Last Name"
+            variant="outlined"
+            color="primary"
+            error={lastNameError}
+          />
+          <TextField
             onChange={(e) => setUsername(e.target.value)}
             sx={{ marginTop: 1, marginBottom: 1, display: "block" }}
             label="Username"
@@ -61,6 +84,7 @@ export default function Signup() {
             label="Password"
             variant="outlined"
             color="primary"
+            type="password"
             error={passwordError}
           />
           <TextField
@@ -69,7 +93,6 @@ export default function Signup() {
             label="Image Url"
             variant="outlined"
             color="primary"
-            error={imageUrlError}
           />
           <Button type="submit" color="primary" variant="contained">
             Submit
