@@ -1,12 +1,12 @@
 const db = require("./database");
-const Runners = require("./models/Runner");
+const Users = require("./models/Users");
 const Runs = require("./models/Runs");
 
-Runs.belongsTo(Runners);
-Runners.hasMany(Runs);
+Runs.belongsTo(Users);
+Users.hasMany(Runs);
 
 module.exports = {
   db,
-  Runners,
+  Users,
   Runs,
 };

@@ -1,8 +1,8 @@
 const { db } = require("./server/db");
-const Runners = require("./server/db/models/Runner");
+const Users = require("./server/db/models/Users");
 const Runs = require("./server/db/models/Runs");
 
-const runners = [
+const users = [
   {
     name: "Maria",
     imageUrl:
@@ -252,8 +252,8 @@ const seed = async () => {
     await db.sync({ force: true });
 
     await Promise.all(
-      runners.map((runner) => {
-        return Runners.create(runner);
+      users.map((user) => {
+        return Users.create(user);
       })
     );
 

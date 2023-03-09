@@ -1,11 +1,11 @@
 const express = require("express");
-const { Runners, Runs } = require("../db");
+const { Users, Runs } = require("../db");
 
 const router = express.Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    const runners = await Runners.findAll({ include: [{ model: Runs }] });
+    const runners = await Users.findAll({ include: [{ model: Runs }] });
 
     res.json(runners);
   } catch (err) {
@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const runner = await Runners.findByPk(req.params.id, {
+    const runner = await Users.findByPk(req.params.id, {
       include: [{ model: Runs }],
     });
 
