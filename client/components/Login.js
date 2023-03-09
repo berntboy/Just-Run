@@ -4,6 +4,7 @@ import { Container } from "@mui/material";
 import { Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/material";
+import { Link } from "@mui/material";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -32,7 +33,11 @@ export default function Login() {
   return (
     <Container>
       <Box className="content">
-        <Typography variant="h3" color="primary">
+        <Typography variant="h1">Just Run</Typography>
+        <Typography variant="h6">
+          Take your training to the next level
+        </Typography>
+        <Typography variant="h4" marginTop={5}>
           Login
         </Typography>
         <form
@@ -63,6 +68,9 @@ export default function Login() {
             Submit
           </Button>
         </form>
+        <Typography>
+          Don't have an account yet? <Link href="/Signup">Signup</Link>
+        </Typography>
       </Box>
     </Container>
   );

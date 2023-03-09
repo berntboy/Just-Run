@@ -4,6 +4,7 @@ import { Container } from "@mui/material";
 import { Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -16,6 +17,7 @@ export default function Signup() {
   const [firstNameError, setFirstNameError] = useState(false);
   const [lastNameError, setLastNameError] = useState(false);
 
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     setUsernameError(false);
@@ -38,6 +40,7 @@ export default function Signup() {
 
     if (username && password && firstName && lastName) {
       console.log(username, password);
+      navigate("/");
     }
   };
 

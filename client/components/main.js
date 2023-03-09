@@ -14,8 +14,8 @@ const Main = () => {
         </ul>
       </nav>
       <Routes>
+        <Route exact path="/" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="/login" element={<Login />} />
         <Route exact path="/runners" element={<AllRunners />} />
         <Route exact path="/runners/:id" element={<SingleRunner />} />
       </Routes>
