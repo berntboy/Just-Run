@@ -4,14 +4,13 @@ import AllRunners from "./Runners";
 import SingleRunner from "./SingleRunner";
 import Login from "./Login";
 import Signup from "./Signup";
+import NavBar from "./NavBar";
 
 const Main = () => {
   return (
     <Router>
       <nav>
-        <ul>
-          <Link to="/runners">All Runners</Link>
-        </ul>
+        <NavBar />
       </nav>
       <Routes>
         <Route exact path="/" element={<Login />} />
