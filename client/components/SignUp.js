@@ -47,9 +47,7 @@ export default function Signup() {
   return (
     <Container>
       <Box className="content">
-        <Typography variant="h3" color="primary">
-          Signup
-        </Typography>
+        <Typography variant="h3">Signup</Typography>
         <form
           noValidate
           autoComplete="off"

@@ -16,22 +16,24 @@ export default function LineChart() {
     dispatch(getSingleRunner(id));
   }, [id]);
 
-  const label = runner.runs.map((run) => {
-    return run.week;
-  });
+  const runData = () => {
+    const recentRuns = [];
+    for (let i = runner.runs.length - 7; i < runner.runs.length; i++) {
+      const currentRun = runner.runs[i];
+      recentRuns.push(currentRun.totalMiles);
+    }
+    console.log(recentRuns);
+    return recentRuns;
+  };
 
-  const runData = runner.runs.map((run) => {
-    return run.totalMiles;
-  });
-
-  if (!runner.name) return <h2>Loading</h2>;
+  if (!runner.firstName) return <h2>Loading</h2>;
 
   const data = {
-    labels: label,
+    labels: [1, 2, 3, 4, 5, 6, 7],
     datasets: [
       {
-        label: "Weekly Miles",
-        data: runData,
+        label: "Miles",
+        data: runData(),
         fill: true,
         backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "rgba(75,192,192,1)",
