@@ -5,6 +5,8 @@ import { Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/material";
 import { Link } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+const axios = require("axios");
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -12,11 +14,12 @@ export default function Login() {
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setUsernameError(false);
     setPasswordError(false);
-    console.log("username:", username, "password:", password);
 
     if (username === "") {
       setUsernameError(true);
@@ -26,7 +29,13 @@ export default function Login() {
     }
 
     if (username && password) {
-      console.log(username, password);
+      await axios.post("./api/runners/login", {
+        username: username,
+        password: password,
+      });
+      if (await axios.get("/runners/verify")) {
+        navigate("./runners/1");
+      }
     }
   };
 

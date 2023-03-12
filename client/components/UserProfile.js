@@ -16,7 +16,7 @@ const UserProfile = () => {
   useEffect(() => {
     dispatch(getSingleRunner(id));
   }, [id]);
-
+  console.log(runner);
   if (!runner.firstName) return <h2>Loading</h2>;
 
   return (

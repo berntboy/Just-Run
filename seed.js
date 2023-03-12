@@ -28,7 +28,7 @@ const runs = [
     hours: 1,
     minutes: 45,
     seconds: 23,
-    UserId: 1,
+    userId: 1,
   },
   {
     totalMiles: 2,
@@ -36,7 +36,7 @@ const runs = [
     hours: 0,
     minutes: 24,
     seconds: 23,
-    UserId: 1,
+    userId: 1,
   },
   {
     totalMiles: 7,
@@ -44,7 +44,7 @@ const runs = [
     hours: 1,
     minutes: 0,
     seconds: 0,
-    UserId: 1,
+    userId: 1,
   },
   {
     totalMiles: 9,
@@ -52,7 +52,7 @@ const runs = [
     hours: 1,
     minutes: 10,
     seconds: 20,
-    UserId: 1,
+    userId: 1,
   },
   {
     totalMiles: 4,
@@ -60,7 +60,7 @@ const runs = [
     hours: 0,
     minutes: 17,
     seconds: 23,
-    UserId: 1,
+    userId: 1,
   },
   {
     totalMiles: 12,
@@ -68,7 +68,7 @@ const runs = [
     hours: 1,
     minutes: 7,
     seconds: 23,
-    UserId: 1,
+    userId: 1,
   },
   {
     totalMiles: 3,
@@ -76,7 +76,7 @@ const runs = [
     hours: 0,
     minutes: 19,
     seconds: 23,
-    UserId: 1,
+    userId: 1,
   },
   {
     totalMiles: 20,
@@ -84,7 +84,7 @@ const runs = [
     hours: 2,
     minutes: 45,
     seconds: 23,
-    UserId: 1,
+    userId: 1,
   },
   {
     totalMiles: 4.5,
@@ -92,7 +92,7 @@ const runs = [
     hours: 0,
     minutes: 45,
     seconds: 8,
-    UserId: 1,
+    userId: 1,
   },
   {
     totalMiles: 6,
@@ -100,7 +100,7 @@ const runs = [
     hours: 0,
     minutes: 40,
     seconds: 23,
-    UserId: 1,
+    userId: 1,
   },
   {
     totalMiles: 8,
@@ -108,7 +108,7 @@ const runs = [
     hours: 1,
     minutes: 2,
     seconds: 15,
-    UserId: 1,
+    userId: 1,
   },
   {
     totalMiles: 9,
@@ -116,7 +116,7 @@ const runs = [
     hours: 1,
     minutes: 13,
     seconds: 23,
-    UserId: 1,
+    userId: 1,
   },
   {
     totalMiles: 2,
@@ -124,7 +124,7 @@ const runs = [
     hours: 0,
     minutes: 13,
     seconds: 23,
-    UserId: 1,
+    userId: 1,
   },
 ];
 

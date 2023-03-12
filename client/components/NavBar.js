@@ -6,11 +6,14 @@ import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 import { useNavigate } from "react-router-dom";
+const axios = require("axios");
 
 export default function NavBar() {
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleClick = async (e) => {
+    e.preventDefault();
+    await axios.put("/api/runners/logout");
     navigate("/");
   };
 
