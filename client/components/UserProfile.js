@@ -8,6 +8,7 @@ import AddNewRun from "./AddNewRun";
 import UserCard from "./UserCard";
 import { Typography, Card } from "@mui/material";
 import RunHistoryTable from "./RunHistoryTable";
+import { Grid, Paper, Container } from "@mui/material";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -35,8 +36,37 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="content">
-      <UserCard props={runner} />
+    <Container>
+      <Grid container spacing={6} alignItems="center">
+        <Grid item xs={12} sm={6} md={6}>
+          <Paper>
+            <UserCard props={runner} />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6} md={6}>
+          <Paper>
+            <AddNewRun id={runner.id} />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6} md={6}>
+          <Paper>
+            <RunHistoryTable props={runner} />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6} md={6}>
+          <Paper>
+            <Typography align="center">
+              Last 7 Runs: {lastSevenRuns()} miles
+            </Typography>
+            <Card>
+              <div className="chart">
+                <LineChart />
+              </div>
+            </Card>
+          </Paper>
+        </Grid>
+      </Grid>
+      {/* <UserCard props={runner} />
       <Typography>Last 7 Runs: {lastSevenRuns()} miles</Typography>
       <Card>
         <div className="chart">
@@ -46,8 +76,8 @@ const UserProfile = () => {
       <RunHistoryTable props={runner} />
       <div>
         <AddNewRun id={runner.id} />
-      </div>
-    </div>
+      </div> */}
+    </Container>
   );
 };
 

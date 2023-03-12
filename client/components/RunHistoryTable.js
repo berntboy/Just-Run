@@ -14,7 +14,7 @@ export default function RunHistoryTable({ props }) {
   const { runs } = props;
   const lastSevenRuns = () => {
     let run = [];
-    for (let i = runs.length - 1; i > runs.length - 8; i--) {
+    for (let i = runs.length - 1; i > runs.length - 9; i--) {
       const currentRun = runs[i];
       if (currentRun) {
         run.push(currentRun);
