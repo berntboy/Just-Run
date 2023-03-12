@@ -41,9 +41,18 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.post("/addUser", async (req, res, next) => {
+  try {
+    const addUser = await Users.create(req.body);
+
+    res.json(addUser);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post("/login", async (req, res, next) => {
   try {
-    console.log("We made it to post!");
     res.cookie("token", await Users.authenticate(req.body));
     res.sendStatus(200);
   } catch (err) {

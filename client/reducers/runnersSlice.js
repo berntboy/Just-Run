@@ -29,6 +29,21 @@ export const addRun = createAsyncThunk(
   }
 );
 
+export const addUser = createAsyncThunk(
+  "user/addOne",
+  async ({ username, password, firstName, lastName, imageUrl }) => {
+    const { data } = await axios.post("/api/runners/addUser", {
+      username: username,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      imageUrl: imageUrl,
+    });
+
+    return data;
+  }
+);
+
 const runnersSlice = createSlice({
   name: "runners",
   initialState: {

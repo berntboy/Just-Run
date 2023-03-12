@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Button } from "@mui/material";
 import { Container } from "@mui/material";
 import { Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { addUser } from "../reducers/runnersSlice";
 
 export default function Signup() {
+  const dispatch = useDispatch();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -39,7 +43,7 @@ export default function Signup() {
     }
 
     if (username && password && firstName && lastName) {
-      console.log(username, password);
+      dispatch(addUser({ username, password, firstName, lastName, imageUrl }));
       navigate("/");
     }
   };

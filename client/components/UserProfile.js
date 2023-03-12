@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { getSingleRunner } from "../reducers/runnersSlice";
 import LineChart from "./LineChart";
 import AddNewRun from "./AddNewRun";
+import UserCard from "./UserCard";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -21,10 +22,7 @@ const UserProfile = () => {
 
   return (
     <div className="content">
-      <h2>
-        {runner.firstName} {runner.lastName}
-      </h2>
-      <img src={runner.imageUrl}></img>
+      <UserCard props={runner} />
       <p>Username: {runner.username}</p>
       <div className="chart">
         <LineChart />

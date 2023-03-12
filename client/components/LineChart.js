@@ -16,13 +16,17 @@ export default function LineChart() {
     dispatch(getSingleRunner(id));
   }, [id]);
 
+  if (runner.runs.length === 0) {
+    return <h5>Add runs to see your line chart</h5>;
+  }
+
   const runData = () => {
     const recentRuns = [];
     for (let i = runner.runs.length - 7; i < runner.runs.length; i++) {
       const currentRun = runner.runs[i];
       recentRuns.push(currentRun.totalMiles);
     }
-    console.log(recentRuns);
+
     return recentRuns;
   };
 
