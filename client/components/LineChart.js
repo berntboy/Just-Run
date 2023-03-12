@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSingleRunner } from "../reducers/runnersSlice";
 import { Line } from "react-chartjs-2";
+// import { Card } from "@mui/material";
 
 export default function LineChart() {
   const dispatch = useDispatch();

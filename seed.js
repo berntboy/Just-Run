@@ -20,7 +20,7 @@ const runs = [
     hours: 0,
     minutes: 45,
     seconds: 23,
-    UserId: 1,
+    userId: 1,
   },
   {
     totalMiles: 10,
