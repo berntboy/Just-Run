@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { getSingleRunner } from "../reducers/runnersSlice";
 import LineChart from "./LineChart";
 import AddNewRun from "./AddNewRun";
@@ -39,13 +38,11 @@ const UserProfile = () => {
     <Container>
       <Grid container spacing={6} alignItems="center">
         <Grid item xs={12} sm={6} md={6}>
-          <Paper>
-            <UserCard props={runner} />
-          </Paper>
+          <UserCard props={runner} />
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
           <Paper>
-            <AddNewRun id={runner.id} />
+            <AddNewRun props={runner.id} />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={6}>
@@ -66,17 +63,6 @@ const UserProfile = () => {
           </Paper>
         </Grid>
       </Grid>
-      {/* <UserCard props={runner} />
-      <Typography>Last 7 Runs: {lastSevenRuns()} miles</Typography>
-      <Card>
-        <div className="chart">
-          <LineChart />
-        </div>
-      </Card>
-      <RunHistoryTable props={runner} />
-      <div>
-        <AddNewRun id={runner.id} />
-      </div> */}
     </Container>
   );
 };

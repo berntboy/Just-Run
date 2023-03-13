@@ -7,8 +7,6 @@ export default function MainLineChart({ props }) {
     return run.week;
   });
 
-  console.log("label:", label);
-
   const runData = props.map((run) => {
     return run.totalMiles;
   });

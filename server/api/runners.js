@@ -14,6 +14,7 @@ router.get("/", async (req, res, next) => {
 });
 
 router.get("/:id", async (req, res, next) => {
+  console.log("/:id");
   try {
     const runner = await Users.findByPk(req.params.id, {
       include: [{ model: Runs }],
@@ -26,15 +27,14 @@ router.get("/:id", async (req, res, next) => {
 });
 
 router.put("/logout", async (req, res, next) => {
-  console.log("this was hit!!!!!!!!!");
   res.clearCookie("token");
   res.end();
 });
 
 router.post("/", async (req, res, next) => {
   try {
+    console.log("this was hit");
     const addRun = await Runs.create(req.body);
-
     res.json(addRun);
   } catch (err) {
     next(err);
@@ -62,6 +62,7 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.get("/verify", async (req, res, next) => {
+  console.log("/:id");
   try {
     if (!req.cookies.token) {
       res.send(false);

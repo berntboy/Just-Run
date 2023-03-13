@@ -16,14 +16,14 @@ export const getSingleRunner = createAsyncThunk(
 
 export const addRun = createAsyncThunk(
   "run/addOne",
-  async ({ distance, hours, minutes, seconds, effortLevel, UserId }) => {
+  async ({ distance, hours, minutes, seconds, effortLevel, id }) => {
     const { data } = await axios.post("/api/runners", {
       totalMiles: parseInt(distance),
       hours: hours,
       minutes: minutes,
       seconds: seconds,
       perceivedEffort: effortLevel,
-      UserId: UserId,
+      userId: id,
     });
     return data;
   }
@@ -44,11 +44,25 @@ export const addUser = createAsyncThunk(
   }
 );
 
+export const getId = createAsyncThunk("user/getid", async () => {
+  const { data } = await axios.get("/api/user/userId");
+
+  return data;
+});
+
+export const getUserIdNumber = createAsyncThunk("user/getuserid", async () => {
+  const { data } = await axios.get("/api/user/id");
+
+  return data;
+});
+
 const runnersSlice = createSlice({
   name: "runners",
   initialState: {
     allRunners: [],
     singleRunner: {},
+    userRuns: [],
+    userId: [],
   },
   extraReducers: (builder) => {
     builder.addCase(getAllRunners.fulfilled, (state, { payload }) => {
@@ -61,6 +75,14 @@ const runnersSlice = createSlice({
 
     builder.addCase(addRun.fulfilled, (state, { payload }) => {
       state.singleRunner.runs.push(payload);
+    });
+
+    builder.addCase(getId.fulfilled, (state, { payload }) => {
+      state.userRuns = payload;
+    });
+
+    builder.addCase(getUserIdNumber.fulfilled, (state, { payload }) => {
+      state.userId = payload;
     });
   },
 });

@@ -4,8 +4,8 @@ const Runs = require("./server/db/models/Runs");
 
 const users = [
   {
-    firstName: "Alex",
-    lastName: "Bernt",
+    firstName: "Jane",
+    lastName: "Doe",
     username: "berntboy",
     password: "test",
     imageUrl:
@@ -42,8 +42,8 @@ const runs = [
     totalMiles: 7,
     perceivedEffort: "Moderate",
     hours: 1,
-    minutes: 0,
-    seconds: 0,
+    minutes: 10,
+    seconds: 32,
     userId: 1,
   },
   {
@@ -66,7 +66,7 @@ const runs = [
     totalMiles: 12,
     perceivedEffort: "Vigorous",
     hours: 1,
-    minutes: 7,
+    minutes: 15,
     seconds: 23,
     userId: 1,
   },
@@ -91,7 +91,7 @@ const runs = [
     perceivedEffort: "Light",
     hours: 0,
     minutes: 45,
-    seconds: 8,
+    seconds: 18,
     userId: 1,
   },
   {
@@ -106,7 +106,7 @@ const runs = [
     totalMiles: 8,
     perceivedEffort: "Moderate",
     hours: 1,
-    minutes: 2,
+    minutes: 20,
     seconds: 15,
     userId: 1,
   },

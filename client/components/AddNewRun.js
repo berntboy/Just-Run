@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@mui/material";
 import { Container } from "@mui/material";
 import { Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { InputLabel } from "@mui/material";
 import Select from "@mui/material/Select";
 import { MenuItem } from "@mui/material";
 import { FormControl } from "@mui/material";
 import { addRun } from "../reducers/runnersSlice";
 
-export default function AddNewRun(id) {
+export default function AddNewRun(props) {
   const dispatch = useDispatch();
-  const UserId = id.id;
+  const id = props.props;
+  console.log(id);
 
   const [distance, setDistance] = useState("");
   const [hours, setHours] = useState("");
@@ -26,7 +26,6 @@ export default function AddNewRun(id) {
   const [minutesError, setMinutesError] = useState(false);
   const [secondsError, setSecondsError] = useState(false);
 
-  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     setDistanceError(false);
@@ -55,17 +54,11 @@ export default function AddNewRun(id) {
       parseInt(minutes) < 60 &&
       (parseInt(seconds) >= 0 || parseInt(seconds) > 59)
     ) {
-      console.log(
-        "About to dispatch:",
-        distance,
-        hours,
-        minutes,
-        seconds,
-        effortLevel
-      );
-      dispatch(
-        addRun({ distance, hours, minutes, seconds, effortLevel, UserId })
-      );
+      dispatch(addRun({ distance, hours, minutes, seconds, effortLevel, id }));
+      setDistance("");
+      setHours("");
+      setMinutes("");
+      setSeconds("");
     }
   };
 
@@ -79,7 +72,6 @@ export default function AddNewRun(id) {
           onSubmit={handleSubmit}
           className="content"
         >
-          <InputLabel>hi</InputLabel>
           <TextField
             onChange={(e) => setDistance(e.target.value)}
             type="number"
@@ -121,11 +113,10 @@ export default function AddNewRun(id) {
             error={secondsError}
           />
           <FormControl fullWidth>
-            <InputLabel>hi</InputLabel>
+            <InputLabel>Effort level</InputLabel>
             <Select
               onChange={(e) => setEffortLevel(e.target.value)}
               sx={{ marginTop: 1, marginBottom: 1, display: "block" }}
-              // label="Percieved Effort"
               value={effortLevel}
               variant="outlined"
               color="primary"

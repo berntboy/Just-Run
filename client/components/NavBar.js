@@ -17,6 +17,16 @@ export default function NavBar() {
     navigate("/");
   };
 
+  const otherClick = async (e) => {
+    e.preventDefault();
+    navigate("/runhistory");
+  };
+
+  const anotherClick = async (e) => {
+    e.preventDefault();
+    navigate("/runners/1");
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -29,6 +39,12 @@ export default function NavBar() {
           >
             Just Run
           </Typography>
+          <Button color="inherit" onClick={anotherClick}>
+            Profile
+          </Button>
+          <Button color="inherit" onClick={otherClick}>
+            Run History
+          </Button>
           <Button color="inherit" onClick={handleClick}>
             Logout
           </Button>

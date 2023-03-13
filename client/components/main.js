@@ -5,6 +5,7 @@ import UserProfile from "./UserProfile";
 import Login from "./Login";
 import Signup from "./Signup";
 import NavBar from "./NavBar";
+import RunHistory from "./RunHistory";
 
 const Main = () => {
   return (
@@ -17,6 +18,7 @@ const Main = () => {
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/runners" element={<AllRunners />} />
         <Route exact path="/runners/:id" element={<UserProfile />} />
+        <Route exact path="/runhistory" element={<RunHistory />} />
       </Routes>
     </Router>
   );

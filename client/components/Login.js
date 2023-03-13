@@ -4,11 +4,15 @@ import { Container } from "@mui/material";
 import { Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/material";
-import { Link } from "@mui/material";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserIdNumber } from "../reducers/runnersSlice";
 const axios = require("axios");
 
 export default function Login() {
+  const dispatch = useDispatch();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState(false);
@@ -33,8 +37,11 @@ export default function Login() {
         username: username,
         password: password,
       });
+      // await dispatch(getUserIdNumber());
+      // const userId = useSelector((state) => state.runners.userId);
       if (await axios.get("/runners/verify")) {
-        navigate("./runners/1");
+        // console.log(userId);
+        navigate(`./runners/1`);
       }
     }
   };
@@ -78,7 +85,7 @@ export default function Login() {
           </Button>
         </form>
         <Typography>
-          Don't have an account yet? <Link href="/Signup">Signup</Link>
+          Don't have an account yet? <Link to="/Signup">Signup</Link>
         </Typography>
       </Box>
     </Container>
