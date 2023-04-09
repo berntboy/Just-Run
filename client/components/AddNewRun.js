@@ -14,7 +14,6 @@ import { addRun } from "../reducers/runnersSlice";
 export default function AddNewRun(props) {
   const dispatch = useDispatch();
   const id = props.props;
-  console.log(id);
 
   const [distance, setDistance] = useState("");
   const [hours, setHours] = useState("");

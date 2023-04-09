@@ -37,11 +37,10 @@ export default function Login() {
         username: username,
         password: password,
       });
-      // await dispatch(getUserIdNumber());
-      // const userId = useSelector((state) => state.runners.userId);
+      const num = await dispatch(getUserIdNumber());
+
       if (await axios.get("/runners/verify")) {
-        // console.log(userId);
-        navigate(`./runners/1`);
+        navigate(`./runners/${num.payload}`);
       }
     }
   };

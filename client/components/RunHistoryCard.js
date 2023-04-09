@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 
 export default function RunHistoryCard({ props }) {
-  console.log("props", props);
   const { id, totalMiles, perceivedEffort, hours, minutes, seconds } = props;
 
   return (
