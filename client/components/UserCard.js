@@ -18,7 +18,7 @@ export default function UserCard({ props }) {
 
     return total;
   };
-  console.log("Total Miles:", totalMiles());
+
   return (
     <div>
       <Card className="content">
