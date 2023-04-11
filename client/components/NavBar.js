@@ -5,11 +5,14 @@ import { Toolbar } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const axios = require("axios");
+import { getUserIdNumber } from "../reducers/runnersSlice";
 
 export default function NavBar() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -19,12 +22,18 @@ export default function NavBar() {
 
   const otherClick = async (e) => {
     e.preventDefault();
-    navigate("/runhistory");
+    const num = await dispatch(getUserIdNumber());
+    if (num.payload) {
+      navigate("/runhistory");
+    }
   };
 
   const anotherClick = async (e) => {
     e.preventDefault();
-    navigate("/runners/1");
+    const num = await dispatch(getUserIdNumber());
+    if (num.payload) {
+      navigate(`/runners/${num.payload}`);
+    }
   };
 
   return (
