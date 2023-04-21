@@ -22,7 +22,8 @@ export default function LineChart() {
 
   const runData = () => {
     const recentRuns = [];
-    for (let i = runner.runs.length - 7; i < runner.runs.length; i++) {
+
+    for (let i = runner.runs.length - 1; i >= 0; i--) {
       const currentRun = runner.runs[i];
       recentRuns.push(currentRun.totalMiles);
     }
