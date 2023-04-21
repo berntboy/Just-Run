@@ -10,54 +10,47 @@ import Select from "@mui/material/Select";
 import { MenuItem } from "@mui/material";
 import { FormControl } from "@mui/material";
 import { addRun } from "../reducers/runnersSlice";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { DatePicker, TimeField } from "@mui/x-date-pickers";
 
 export default function AddNewRun(props) {
   const dispatch = useDispatch();
   const id = props.props;
 
+  const [date, setDate] = useState("");
   const [distance, setDistance] = useState("");
-  const [hours, setHours] = useState("");
-  const [minutes, setMinutes] = useState("");
-  const [seconds, setSeconds] = useState("");
+  const [runTime, setRunTime] = useState("");
   const [effortLevel, setEffortLevel] = useState("Moderate");
+  const [dateError, setDateError] = useState(false);
   const [distanceError, setDistanceError] = useState(false);
-  const [hoursError, setHoursError] = useState(false);
-  const [minutesError, setMinutesError] = useState(false);
-  const [secondsError, setSecondsError] = useState(false);
+  const [runTimeError, setRunTimeError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setDateError(false);
     setDistanceError(false);
-    setHoursError(false);
-    setMinutesError(false);
-    setSecondsError(false);
+    setRunTimeError(false);
 
     if (parseInt(distance) < 0 || parseInt(distance) > 100) {
       setDistanceError(true);
     }
-    if (parseInt(hours) < 0 || parseInt(hours) > 24) {
+    if (runTime === "") {
       setHoursError(true);
     }
-    if (parseInt(minutes) < 0 || parseInt(minutes) > 59) {
-      setMinutesError(true);
-    }
-    if (parseInt(seconds) < 0 || parseInt(seconds) > 59) {
-      setSecondsError(true);
-    }
-    if (
-      parseInt(distance) > 0 &&
-      parseInt(distance) < 100 &&
-      parseInt(hours) >= 0 &&
-      parseInt(hours) < 24 &&
-      parseInt(minutes) >= 0 &&
-      parseInt(minutes) < 60 &&
-      (parseInt(seconds) >= 0 || parseInt(seconds) > 59)
-    ) {
-      dispatch(addRun({ distance, hours, minutes, seconds, effortLevel, id }));
+    let time = `${runTime["$H"]}:${runTime["$m"]}:${runTime["$s"]}`;
+    const adjustTime = () => {
+      if (runTime["$H"] === 0) {
+        time = `${runTime["$m"]}:${runTime["$s"]}`;
+      }
+    };
+    adjustTime();
+    if (parseInt(distance) > 0 && parseInt(distance) < 100) {
+      console.log("DATE", date);
+      console.log("TIME", time);
+      dispatch(addRun({ distance, time, effortLevel, id }));
       setDistance("");
-      setHours("");
-      setMinutes("");
-      setSeconds("");
+      setRunTime("");
     }
   };
 
@@ -71,6 +64,30 @@ export default function AddNewRun(props) {
           onSubmit={handleSubmit}
           className="content"
         >
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              onChange={(e) => setDate(e.target.value)}
+              sx={{ marginTop: 1, marginBottom: 1, display: "block" }}
+              label="Date"
+              variant="outlined"
+              color="primary"
+              required
+              error={dateError}
+            />
+          </LocalizationProvider>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <TimeField
+              sx={{ marginTop: 1, marginBottom: 1, display: "block" }}
+              label="time"
+              value={runTime}
+              onChange={(newValue) => setRunTime(newValue)}
+              variant="outlined"
+              color="primary"
+              format="HH:mm:ss"
+              error={runTimeError}
+              required
+            />
+          </LocalizationProvider>
           <TextField
             onChange={(e) => setDistance(e.target.value)}
             type="number"
@@ -80,36 +97,6 @@ export default function AddNewRun(props) {
             color="primary"
             required
             error={distanceError}
-          />
-          <TextField
-            onChange={(e) => setHours(e.target.value)}
-            sx={{ marginTop: 1, marginBottom: 1, display: "block" }}
-            type="number"
-            label="Hours"
-            variant="outlined"
-            color="primary"
-            required
-            error={hoursError}
-          />
-          <TextField
-            onChange={(e) => setMinutes(e.target.value)}
-            sx={{ marginTop: 1, marginBottom: 1, display: "block" }}
-            label="Minutes"
-            type="number"
-            variant="outlined"
-            color="primary"
-            required
-            error={minutesError}
-          />
-          <TextField
-            onChange={(e) => setSeconds(e.target.value)}
-            sx={{ marginTop: 1, marginBottom: 1, display: "block" }}
-            label="Seconds"
-            type="number"
-            variant="outlined"
-            color="primary"
-            required
-            error={secondsError}
           />
           <FormControl fullWidth>
             <InputLabel>Effort level</InputLabel>

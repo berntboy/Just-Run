@@ -9,13 +9,7 @@ module.exports = db.define("runs", {
   perceivedEffort: {
     type: Sequelize.STRING,
   },
-  hours: {
-    type: Sequelize.INTEGER,
-  },
-  minutes: {
-    type: Sequelize.INTEGER,
-  },
-  seconds: {
-    type: Sequelize.INTEGER,
+  time: {
+    type: Sequelize.STRING,
   },
 });

@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 
 export default function RunHistoryCard({ props }) {
-  const { id, totalMiles, perceivedEffort, hours, minutes, seconds } = props;
+  const { id, totalMiles, perceivedEffort, time } = props;
 
   return (
     <div>
@@ -16,9 +16,7 @@ export default function RunHistoryCard({ props }) {
         <CardHeader title={`All Time Run #${id}`} />
         <CardContent>
           <Typography>Miles Ran: {totalMiles}</Typography>
-          <Typography>
-            Total Time: {`${hours}:${minutes}:${seconds}`}
-          </Typography>
+          <Typography>Total Time: {`${time}`}</Typography>
           <Typography>Perceived Effort: {perceivedEffort}</Typography>
         </CardContent>
       </Card>

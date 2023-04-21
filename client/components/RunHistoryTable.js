@@ -51,7 +51,7 @@ export default function RunHistoryTable({ props }) {
                   {run.id}
                 </TableCell>
                 <TableCell align="right">{run.totalMiles}</TableCell>
-                <TableCell align="right">{`${run.hours}:${run.minutes}:${run.seconds}`}</TableCell>
+                <TableCell align="right">{`${run.time}`}</TableCell>
                 <TableCell align="right">{run.perceivedEffort}</TableCell>
               </TableRow>
             ))}
