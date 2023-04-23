@@ -102,6 +102,7 @@ export default function AddNewRun(props) {
             />
           </LocalizationProvider>
           <TextField
+            value={distance}
             onChange={(e) => setDistance(e.target.value)}
             type="number"
             sx={{ marginTop: 1, marginBottom: 1, display: "block" }}
