@@ -16,8 +16,9 @@ export const getSingleRunner = createAsyncThunk(
 
 export const addRun = createAsyncThunk(
   "run/addOne",
-  async ({ distance, time, effortLevel, id }) => {
+  async ({ date, distance, time, effortLevel, id }) => {
     const { data } = await axios.post("/api/runners", {
+      date: date,
       totalMiles: parseInt(distance),
       time: time,
       perceivedEffort: effortLevel,

@@ -12,4 +12,7 @@ module.exports = db.define("runs", {
   time: {
     type: Sequelize.STRING,
   },
+  date: {
+    type: Sequelize.STRING,
+  },
 });

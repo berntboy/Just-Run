@@ -18,17 +18,17 @@ export default function AddNewRun(props) {
   const dispatch = useDispatch();
   const id = props.props;
 
-  const [date, setDate] = useState("");
+  const [runDate, setRunDate] = useState("");
   const [distance, setDistance] = useState("");
   const [runTime, setRunTime] = useState("");
   const [effortLevel, setEffortLevel] = useState("Moderate");
-  const [dateError, setDateError] = useState(false);
+  const [runDateError, setRunDateError] = useState(false);
   const [distanceError, setDistanceError] = useState(false);
   const [runTimeError, setRunTimeError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setDateError(false);
+    setRunDateError(false);
     setDistanceError(false);
     setRunTimeError(false);
 
@@ -38,19 +38,31 @@ export default function AddNewRun(props) {
     if (runTime === "") {
       setHoursError(true);
     }
-    let time = `${runTime["$H"]}:${runTime["$m"]}:${runTime["$s"]}`;
+    let hours = runTime["$H"];
+    let minutes = runTime["$m"];
+    let seconds = runTime["$s"];
+    let time = `${hours}:${minutes}:${seconds}`;
+
     const adjustTime = () => {
+      console.log("Length", minutes.toString().length);
+      if (minutes.toString().length === 1) {
+        minutes = `0${minutes}`;
+      }
+      if (seconds.toString().length === 1) {
+        seconds = `0${seconds}`;
+      }
+      time = `${hours}:${minutes}:${seconds}`;
       if (runTime["$H"] === 0) {
-        time = `${runTime["$m"]}:${runTime["$s"]}`;
+        time = `${minutes}:${seconds}`;
       }
     };
+    const date = runDate["$d"].toString().slice(0, 16);
     adjustTime();
     if (parseInt(distance) > 0 && parseInt(distance) < 100) {
-      console.log("DATE", date);
-      console.log("TIME", time);
-      dispatch(addRun({ distance, time, effortLevel, id }));
+      dispatch(addRun({ date, distance, time, effortLevel, id }));
       setDistance("");
       setRunTime("");
+      setRunDate("");
     }
   };
 
@@ -66,13 +78,14 @@ export default function AddNewRun(props) {
         >
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
-              onChange={(e) => setDate(e.target.value)}
+              value={runDate}
+              onChange={(newValue) => setRunDate(newValue)}
               sx={{ marginTop: 1, marginBottom: 1, display: "block" }}
               label="Date"
               variant="outlined"
               color="primary"
               required
-              error={dateError}
+              error={runDateError}
             />
           </LocalizationProvider>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
