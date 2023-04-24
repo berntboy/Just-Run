@@ -17,7 +17,9 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState(
+    "https://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Running/580/quote-1.jpg"
+  );
   const [usernameError, setUsernameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [firstNameError, setFirstNameError] = useState(false);

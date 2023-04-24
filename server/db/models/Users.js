@@ -36,7 +36,7 @@ const Users = db.define("user", {
   imageUrl: {
     type: Sequelize.STRING,
     defaultValue:
-      "https://news.belmont.edu/wp-content/uploads/2019/07/The-Lawn.jpg",
+      "https://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Running/580/quote-1.jpg",
   },
 });
 
