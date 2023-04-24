@@ -35,8 +35,8 @@ export default function RunHistoryTable({ props }) {
         <Table sx={{ maxWidth: 600 }}>
           <TableHead>
             <TableRow>
-              <TableCell>Run (Most recent first)</TableCell>
-              <TableCell align="right">Distance</TableCell>
+              <TableCell>Run Date</TableCell>
+              <TableCell align="right">Distance (Miles)</TableCell>
               <TableCell align="right">Time</TableCell>
               <TableCell align="right">Perceived Effort</TableCell>
             </TableRow>
@@ -48,7 +48,7 @@ export default function RunHistoryTable({ props }) {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {run.id}
+                  {run.date}
                 </TableCell>
                 <TableCell align="right">{run.totalMiles}</TableCell>
                 <TableCell align="right">{`${run.time}`}</TableCell>
