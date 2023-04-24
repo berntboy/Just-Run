@@ -98,6 +98,7 @@ export default function AddNewRun(props) {
               color="primary"
               format="HH:mm:ss"
               error={runTimeError}
+              fullWidth
               required
             />
           </LocalizationProvider>
@@ -110,6 +111,7 @@ export default function AddNewRun(props) {
             variant="outlined"
             color="primary"
             required
+            fullWidth
             error={distanceError}
           />
           <FormControl fullWidth>
