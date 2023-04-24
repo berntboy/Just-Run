@@ -7,6 +7,8 @@ import { TextField } from "@mui/material";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { addUser } from "../reducers/runnersSlice";
+import { getUserIdNumber } from "../reducers/runnersSlice";
+const axios = require("axios");
 
 export default function Signup() {
   const dispatch = useDispatch();
@@ -22,7 +24,7 @@ export default function Signup() {
   const [lastNameError, setLastNameError] = useState(false);
 
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setUsernameError(false);
     setPasswordError(false);
@@ -43,8 +45,21 @@ export default function Signup() {
     }
 
     if (username && password && firstName && lastName) {
-      dispatch(addUser({ username, password, firstName, lastName, imageUrl }));
-      navigate("/");
+      await dispatch(
+        addUser({ username, password, firstName, lastName, imageUrl })
+      );
+
+      await axios.post("./api/runners/login", {
+        username: username,
+        password: password,
+      });
+
+      const num = await dispatch(getUserIdNumber());
+
+      if (await axios.get("/runners/verify")) {
+        console.log(num);
+        navigate(`/runners/${num.payload}`);
+      }
     }
   };
 
