@@ -13,12 +13,13 @@ import { addRun } from "../reducers/runnersSlice";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { DatePicker, TimeField } from "@mui/x-date-pickers";
+import dayjs from "dayjs";
 
 export default function AddNewRun(props) {
   const dispatch = useDispatch();
   const id = props.props;
 
-  const [runDate, setRunDate] = useState("");
+  const [runDate, setRunDate] = useState(dayjs("2023-04-24"));
   const [distance, setDistance] = useState("");
   const [runTime, setRunTime] = useState("");
   const [effortLevel, setEffortLevel] = useState("Moderate");
@@ -62,7 +63,7 @@ export default function AddNewRun(props) {
       dispatch(addRun({ date, distance, time, effortLevel, id }));
       setDistance("");
       setRunTime("");
-      setRunDate("");
+      setRunDate(dayjs("2023-04-24"));
     }
   };
 
