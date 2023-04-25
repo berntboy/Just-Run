@@ -6,7 +6,7 @@ import { TextField } from "@mui/material";
 import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getUserIdNumber } from "../reducers/runnersSlice";
 const axios = require("axios");
 
