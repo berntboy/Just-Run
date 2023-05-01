@@ -29,3 +29,7 @@ form {
 input {
   margin-right: 10px;
 }
+
+body {
+  background-color: whitesmoke;
+}
