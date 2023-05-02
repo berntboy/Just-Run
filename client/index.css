@@ -33,3 +33,8 @@ input {
 body {
   background-color: whitesmoke;
 }
+
+.LineChart {
+  display: flex;
+  justify-content: center;
+}

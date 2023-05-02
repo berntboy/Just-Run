@@ -17,7 +17,7 @@ export default function LineChart() {
   }, [id]);
 
   if (runner.runs.length === 0) {
-    return <h5>Add runs to see your line chart</h5>;
+    return <h5 class="LineChart">Add runs to view your line chart</h5>;
   }
 
   const runData = () => {
