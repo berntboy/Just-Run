@@ -9,7 +9,7 @@
     "start-dev": "webpack -w & nodemon server",
     "seed": "node ./seed.js",
     "xyz": "webpack",
-    "build": "webpack --mode production"
+    "build": "node_modules/.bin/webpack --mode production"
   },
   "author": "",
   "license": "ISC",
